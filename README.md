@@ -14,14 +14,14 @@
 
 | Concept | Description |
 |---|---|
-| **Agent** | Core agent capability for agent-skills workflows |
-| **Skill** | Core skill capability for agent-skills workflows |
-| **Claude** | Core claude capability for agent-skills workflows |
-| **Library** | Core library capability for agent-skills workflows |
-| **Tool** | Core tool capability for agent-skills workflows |
-| **Automation** | Core automation capability for agent-skills workflows |
-| **Workflow** | Core workflow capability for agent-skills workflows |
-| **Production** | Core production capability for agent-skills workflows |
+| **Skill** | Reusable capability module for Claude Code |
+| **Auto-Activate** | Intent-based keyword trigger system |
+| **SKILL.md** | Standard skill definition format |
+| **Index** | index.json manifest for skill discovery |
+| **Deactivate** | Automatic skill unloading after task |
+| **Compose** | Chain skills for complex workflows |
+| **Test** | Skill unit testing framework |
+| **Publish** | Share skills to community registry |
 
 ---
 
@@ -46,19 +46,19 @@ claude 'what can agent-skills do?'
 ## ☠️ STARTUPS / BUSINESSES
 
 - **Agencies**: automate agent workflows for clients at scale
-- **Founders**: ship skill features 10x faster with Claude
-- **Freelancers**: deliver claude work with AI-assisted precision
+- **Founders**: ship skill features 10x faster
+- **Freelancers**: deliver claude work with AI precision
 
 ---
 
 ## Features
 
-- Agent automation and orchestration
-- Skill automation and orchestration
-- Claude automation and orchestration
-- Library automation and orchestration
-- Tool automation and orchestration
-- Automation automation and orchestration
+- Agent automation
+- Skill automation
+- Claude automation
+- Library automation
+- Tool automation
+- Automation automation
 
 ---
 
@@ -74,9 +74,14 @@ cd agent-skills
 ## Usage
 
 ```bash
-# In Claude Code
-/agent-skills
-claude 'agent task here'
+# Activate skill in Claude Code
+claude --skill agent-skills "your task here"
+
+# Quick workflow
+claude "agent automation task"
+
+# Get help
+claude "what can agent-skills do?"
 ```
 
 ---
@@ -85,11 +90,11 @@ claude 'agent task here'
 
 | Variable | Description | Default |
 |---|---|---|
-| `API_KEY` | Primary API key for service access | Required |
+| `API_KEY` | Primary API key | Required |
 | `MODEL` | AI model to use | claude-3-5-sonnet |
-| `DEBUG` | Enable verbose debug output | false |
-| `MAX_TOKENS` | Max token budget per request | 8192 |
-| `TIMEOUT` | Request timeout in seconds | 30 |
+| `DEBUG` | Enable verbose debug | false |
+| `MAX_TOKENS` | Max token budget | 8192 |
+| `TIMEOUT` | Request timeout (sec) | 30 |
 | `LOG_LEVEL` | Logging verbosity | info |
 
 ---
@@ -98,40 +103,36 @@ claude 'agent task here'
 
 ```
 agent-skills/
-├── README.md           # This file
+├── README.md           # Documentation
 ├── SKILL.md            # Claude Code skill definition
-├── scripts/            # Automation and utility scripts
-├── templates/          # Output and prompt templates
-├── examples/           # Usage examples and demos
-├── tests/              # Unit and integration tests
+├── scripts/            # Automation scripts
+├── templates/          # Output templates
+├── examples/           # Usage examples
 └── docs/               # Extended documentation
-    ├── setup.md        # Setup guide
-    ├── api.md          # API reference
-    └── faq.md          # Frequently asked questions
 ```
 
 ---
 
 ## Examples
 
-### Basic Usage
+### Basic
 
 ```bash
-# Activate in Claude Code
-claude --skill agent-skills "your task here"
+# Simple task
+claude --skill agent-skills "agent task"
 
-# With options
-claude --skill agent-skills --verbose "detailed task"
+# Verbose
+claude --skill agent-skills --verbose "detailed skill task"
 ```
 
-### Advanced Workflow
+### Advanced Pipeline
 
 ```bash
-# Chain with other skills
+# Chain skills
 claude --skill agent-skills "step 1" | claude --skill summarize
 
-# Batch processing
-for item in list; do
+# Batch run
+for item in $(cat list.txt); do
   claude --skill agent-skills "process $item"
 done
 ```
@@ -142,18 +143,18 @@ done
 
 | Issue | Cause | Fix |
 |---|---|---|
-| Auth fails | Invalid/expired API key | Re-export key in shell profile |
-| Timeout error | Network latency or large payload | Increase TIMEOUT value |
-| Empty output | Prompt too vague | Add more context to request |
-| Rate limit hit | Too many requests | Add delay between calls |
-| Model error | Unsupported model version | Update MODEL variable |
+| Auth fails | Invalid API key | Re-export key in shell profile |
+| Timeout | Network or large payload | Increase TIMEOUT value |
+| Empty output | Prompt too vague | Add more context |
+| Rate limit | Too many requests | Add delay between calls |
+| Model error | Unsupported version | Update MODEL variable |
 | Import error | Missing dependency | Run pip install -r requirements.txt |
 
 ---
 
 ## Comparison
 
-| Feature | This Skill | Alternative A | Alternative B |
+| Feature | This Skill | Alt A | Alt B |
 |---|---|---|---|
 | Claude Code native | ✅ | ❌ | ✅ |
 | Auto-activation | ✅ | ✅ | ❌ |
@@ -163,23 +164,21 @@ done
 
 ---
 
-## Contributing
-
-1. Fork this repo
-2. Create feature branch: `git checkout -b feat/your-feature`
-3. Commit changes: `git commit -m 'feat: add feature'`
-4. Push: `git push origin feat/your-feature`
-5. Open PR
-
----
-
 ## Changelog
 
 | Version | Changes |
 |---|---|
-| v2.0 | Major refactor, Claude 4 support |
-| v1.5 | Added auto-activation keywords |
+| v2.0 | Claude 4 support, auto-activation |
+| v1.5 | Added keyword triggers |
 | v1.0 | Initial release |
+
+---
+
+## Contributing
+
+1. Fork → feature branch → commit → PR
+2. Follow conventional commits: `feat:`, `fix:`, `docs:`
+3. Add tests for new features
 
 ---
 
@@ -191,7 +190,7 @@ done
 
 ## 📜 License
 
-MIT — free to use, modify, and distribute.
+MIT — free to use, modify, distribute.
 
 ---
 
